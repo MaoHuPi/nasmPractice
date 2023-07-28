@@ -28,14 +28,14 @@ section .data
 
 section .bss
 	printChar:      resb 1
-	printLabel:     resb 10
+	printLabel:     resb 64
 
 section .text
 	global 	main
 	extern	puts
 
 main:       ; function main()
-    ; print label "horizontal""
+    ; print label "horizontal:"
 	mov     rcx     , labels.horizontal
 	mov     rbx     , 11
 	call	_print
@@ -68,10 +68,10 @@ main:       ; function main()
     jl      __printChar
 
     ; exit process
-	xor     rax     , rcx
-	xor     rbx     , rcx
+	xor     rax     , rax
+	xor     rbx     , rbx
 	xor     rcx     , rcx
-	xor     rdx     , rcx
+	xor     rdx     , rdx
 	retn
 
 _print:     ; function _print(rcx:address messageContent, rbx:int messageLength)
